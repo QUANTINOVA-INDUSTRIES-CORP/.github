@@ -1,0 +1,49 @@
+# CODEOWNERS template for QUANTINOVA INDUSTRIES CORP repositories.
+#
+# IMPORTANT:
+# 1. GitHub uses the last matching pattern.
+# 2. Referenced users or teams must exist and have explicit write access.
+# 3. Organization teams must be visible for automatic review requests.
+# 4. Uncomment rules only after replacing every placeholder and validating access.
+# 5. Never leave invalid or unapproved owners active.
+#
+# Recommended organization teams:
+#   @QUANTINOVA-INDUSTRIES-CORP/repository-admins
+#   @QUANTINOVA-INDUSTRIES-CORP/engineering
+#   @QUANTINOVA-INDUSTRIES-CORP/security
+#   @QUANTINOVA-INDUSTRIES-CORP/devops
+#   @QUANTINOVA-INDUSTRIES-CORP/documentation
+#
+# Example default ownership:
+# * @QUANTINOVA-INDUSTRIES-CORP/repository-admins
+#
+# Governance and community-health files:
+# /README.md @QUANTINOVA-INDUSTRIES-CORP/repository-admins
+# /CONTRIBUTING.md @QUANTINOVA-INDUSTRIES-CORP/repository-admins
+# /CODE_OF_CONDUCT.md @QUANTINOVA-INDUSTRIES-CORP/repository-admins
+# /SECURITY.md @QUANTINOVA-INDUSTRIES-CORP/security
+# /SUPPORT.md @QUANTINOVA-INDUSTRIES-CORP/repository-admins
+# /CODEOWNERS @QUANTINOVA-INDUSTRIES-CORP/repository-admins
+#
+# GitHub configuration:
+# /.github/ @QUANTINOVA-INDUSTRIES-CORP/repository-admins
+# /workflow-templates/ @QUANTINOVA-INDUSTRIES-CORP/devops @QUANTINOVA-INDUSTRIES-CORP/security
+#
+# Documentation:
+# /docs/ @QUANTINOVA-INDUSTRIES-CORP/documentation
+#
+# Typical application ownership examples:
+# /src/ @QUANTINOVA-INDUSTRIES-CORP/engineering
+# /tests/ @QUANTINOVA-INDUSTRIES-CORP/engineering
+# /infra/ @QUANTINOVA-INDUSTRIES-CORP/devops
+# /terraform/ @QUANTINOVA-INDUSTRIES-CORP/devops
+# /migrations/ @QUANTINOVA-INDUSTRIES-CORP/engineering @QUANTINOVA-INDUSTRIES-CORP/devops
+#
+# Sensitive file-type examples:
+# *.tf @QUANTINOVA-INDUSTRIES-CORP/devops
+# *.sql @QUANTINOVA-INDUSTRIES-CORP/engineering
+# package-lock.json @QUANTINOVA-INDUSTRIES-CORP/engineering
+# requirements*.txt @QUANTINOVA-INDUSTRIES-CORP/engineering
+# pyproject.toml @QUANTINOVA-INDUSTRIES-CORP/engineering
+#
+# No active rules are included by default. Activate only approved, validated rules.
