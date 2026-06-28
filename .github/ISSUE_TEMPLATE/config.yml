@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability report
+    url: https://github.com/QUANTINOVA-INDUSTRIES-CORP/.github/security/policy
+    about: Report suspected vulnerabilities privately. Do not disclose security issues in a public issue.
+  - name: Support and usage guidance
+    url: https://github.com/QUANTINOVA-INDUSTRIES-CORP/.github/blob/main/SUPPORT.md
+    about: Review support channels, response expectations, and escalation guidance before opening an issue.
