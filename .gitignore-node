@@ -1,0 +1,111 @@
+# QUANTINOVA INDUSTRIES CORP — Node.js / TypeScript gitignore template
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+.pnp.cjs
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
+
+# Package-manager logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+.nuxt/
+.output/
+.svelte-kit/
+.turbo/
+.cache/
+.parcel-cache/
+.vite/
+storybook-static/
+
+# Test and coverage outputs
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+blob-report/
+junit.xml
+
+# TypeScript
+*.tsbuildinfo
+
+# Runtime files
+*.pid
+*.pid.lock
+pids/
+logs/
+*.log
+
+# Environment and secret files
+.env
+.env.*
+!.env.example
+!.env.template
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+
+# Local databases and data
+*.sqlite
+*.sqlite3
+*.db
+data/local/
+tmp/
+temp/
+
+# IDE and editor
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.example.json
+.idea/
+*.swp
+*.swo
+*~
+
+# Operating system
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Tooling
+.eslintcache
+.stylelintcache
+.vercel/
+.netlify/
+.serverless/
+.aws-sam/
+firebase-debug.log*
+firebase-debug.*.log*
+.supabase/
+
+# Generated documentation
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+
+# Archives and local exports
+*.zip
+*.tar
+*.tar.gz
+*.7z
+exports/
+backups/
+
+# Keep dependency lockfiles committed:
+# package-lock.json
+# pnpm-lock.yaml
+# yarn.lock
