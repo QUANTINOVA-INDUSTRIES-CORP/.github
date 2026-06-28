@@ -1,0 +1,163 @@
+name: Bug report
+description: Report a reproducible defect in an application, automation, integration, or document-generation workflow.
+title: "[BUG] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a defect.
+
+        Do not include passwords, API keys, access tokens, client-confidential information, personal data, procurement-sensitive records, or unredacted production logs. Report security vulnerabilities privately under the repository's Security tab instead of using this form.
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Pre-submission checks
+      description: Confirm each item before submitting.
+      options:
+        - label: I searched existing open and closed issues for the same defect.
+          required: true
+        - label: I reviewed the repository documentation and support guidance.
+          required: true
+        - label: This report does not disclose a security vulnerability or confidential information.
+          required: true
+        - label: I can provide enough information for another person to reproduce or investigate the defect.
+          required: true
+
+  - type: input
+    id: repository_component
+    attributes:
+      label: Repository and component
+      description: Identify the affected repository, service, package, module, workflow, page, or document.
+      placeholder: "Example: [REPOSITORY_NAME] — src/pricing/calculate-margin.ts"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Operational severity
+      description: Select the highest applicable impact.
+      options:
+        - S4 — Minor inconvenience; workaround available
+        - S3 — Degraded function; limited operational impact
+        - S2 — Major function unavailable or materially incorrect
+        - S1 — Critical outage, data-loss risk, or business-critical blockage
+    validations:
+      required: true
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      options:
+        - Local development
+        - Test or staging
+        - Production
+        - GitHub Actions
+        - Documentation only
+        - Multiple environments
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version, release, branch, or commit
+      description: Provide the most precise identifier available.
+      placeholder: "Example: v2.4.1, main@abcdef1, or release/2026-06"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_behavior
+    attributes:
+      label: Current behavior
+      description: Describe what happened, including the exact error or incorrect output.
+      placeholder: "State the observed result. Redact confidential values."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: Expected behavior
+      description: Describe the correct result and cite the relevant requirement, specification, or acceptance criterion when available.
+      placeholder: "State what should have happened."
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Provide a minimal, deterministic sequence.
+      placeholder: |
+        1. Check out commit ...
+        2. Configure ...
+        3. Run ...
+        4. Observe ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sanitized logs or evidence
+      description: Paste minimal logs, screenshots, sample input, or output after removing sensitive information.
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: environment_details
+    attributes:
+      label: Environment details
+      description: Include operating system, runtime, package-manager, browser, database, device, or integration versions that may affect reproduction.
+      placeholder: |
+        - OS:
+        - Runtime:
+        - Package manager:
+        - Browser/device:
+        - Database/service:
+    validations:
+      required: false
+
+  - type: dropdown
+    id: regression
+    attributes:
+      label: Regression status
+      description: Did this work correctly before?
+      options:
+        - Yes — previously worked
+        - No — never worked
+        - Unknown
+    validations:
+      required: true
+
+  - type: textarea
+    id: business_impact
+    attributes:
+      label: Business and operational impact
+      description: Explain affected users, processes, deadlines, data, financial exposure, or compliance implications without disclosing confidential details.
+      placeholder: "Example: Blocks three users from generating approved purchase-order PDFs."
+    validations:
+      required: true
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: Workaround
+      description: Document any safe temporary workaround and its limitations.
+      placeholder: "Write 'None known' when no workaround exists."
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional context
+      description: Add related issues, pull requests, diagrams, or non-sensitive references.
+    validations:
+      required: false
