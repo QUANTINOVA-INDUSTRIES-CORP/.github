@@ -1,0 +1,154 @@
+name: Feature request
+description: Propose a new capability or a material improvement with defined business value and acceptance criteria.
+title: "[FEATURE] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for product, automation, documentation, infrastructure, and developer-experience improvements.
+
+        Do not include confidential client information, credentials, procurement-sensitive data, or security vulnerability details.
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Pre-submission checks
+      options:
+        - label: I searched existing issues and roadmaps for the same or a substantially similar request.
+          required: true
+        - label: I described the underlying problem, not only a preferred implementation.
+          required: true
+        - label: This request contains no credentials, personal data, or confidential business information.
+          required: true
+
+  - type: input
+    id: repository_component
+    attributes:
+      label: Repository and affected area
+      placeholder: "Example: [REPOSITORY_NAME] — supplier onboarding workflow"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: request_type
+    attributes:
+      label: Request type
+      options:
+        - New capability
+        - Enhancement to an existing capability
+        - Automation
+        - Integration
+        - Security or compliance improvement
+        - Performance or reliability improvement
+        - Documentation or developer experience
+        - Deprecation or removal
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem statement
+      description: Describe the current user or business problem, who experiences it, and why the current process is insufficient.
+      placeholder: "When [user/process] does [activity], [problem] occurs, resulting in [impact]."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_outcome
+    attributes:
+      label: Desired outcome
+      description: Describe the capability and observable outcome without prescribing unnecessary implementation details.
+      placeholder: "Users should be able to..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: business_value
+    attributes:
+      label: Business value
+      description: State the expected operational, financial, risk, compliance, quality, or user-experience benefit.
+      placeholder: "Quantify the value when reliable data is available; otherwise state NOT STATED."
+    validations:
+      required: true
+
+  - type: textarea
+    id: users
+    attributes:
+      label: Users and stakeholders
+      placeholder: |
+        - Primary users:
+        - Process owner:
+        - Reviewers or approvers:
+        - External dependencies:
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance criteria
+      description: Provide testable conditions using checkboxes.
+      placeholder: |
+        - [ ] Given ..., when ..., then ...
+        - [ ] Authorization is enforced for ...
+        - [ ] Audit logging records ...
+        - [ ] Documentation is updated.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Suggested priority
+      options:
+        - Critical — required to prevent imminent material harm
+        - High — significant business or operational value
+        - Medium — useful improvement with planned value
+        - Low — optional optimization
+    validations:
+      required: true
+
+  - type: input
+    id: target_date
+    attributes:
+      label: Required date or business deadline
+      description: Use YYYY-MM-DD. Write NOT STATED when there is no committed deadline.
+      placeholder: "2026-09-30 or NOT STATED"
+    validations:
+      required: true
+
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints and non-functional requirements
+      description: Include security, privacy, performance, availability, compatibility, accessibility, data-retention, legal, budget, or integration constraints.
+      placeholder: "List known constraints. Write NOT STATED for unknown items."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Describe manual processes, existing tools, rejected options, or reasons no alternative is acceptable.
+      placeholder: "Include the current workaround and its limitations."
+    validations:
+      required: true
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies and risks
+      description: Identify systems, teams, vendors, approvals, migrations, or material risks.
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional context
+      description: Add non-sensitive diagrams, mockups, related issues, or references.
+    validations:
+      required: false
