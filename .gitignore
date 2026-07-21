@@ -1,0 +1,8 @@
+# Local-only automation — CI/workflow config never ships to the org
+_LOCAL_CI/
+workflow-templates/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini

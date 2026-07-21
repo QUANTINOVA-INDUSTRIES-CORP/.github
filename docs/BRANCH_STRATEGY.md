@@ -6,6 +6,11 @@ QUANTINOVA INDUSTRIES CORP uses a protected-main, short-lived branch strategy ba
 
 This approach is preferred over long-lived Git Flow branches for most repositories because it reduces divergence, integration risk, and unreviewed change accumulation.
 
+> CI and workflow automation are **local-only** and are never committed to the organization.
+> Where this document references "required status checks", validation is performed locally before
+> review; org-side gating relies on pull-request review and code-owner approval, plus any status
+> checks a repository configures independently.
+
 ## 2. Permanent branches
 
 ### `main`
@@ -27,13 +32,13 @@ The repository may define `main` as continuously deployable or release-ready. Th
 
 ### Release branches
 
-Use `release/<version-or-period>` only when the repository must stabilize a release independently of ongoing development.
+Use `RELEASE/<VERSION_OR_PERIOD>` only when the repository must stabilize a release independently of ongoing development.
 
 Examples:
 
 ```text
-release/2.4.0
-release/2026-07
+RELEASE/2.4.0
+RELEASE/2026-07
 ```
 
 Release branches must be temporary. Only release blockers, versioning, release notes, and approved stabilization changes may be added.
@@ -45,54 +50,60 @@ Every release-branch fix must also be merged or cherry-picked back to `main`.
 Format:
 
 ```text
-<type>/<issue-id>-<short-kebab-description>
+<TYPE>/<SUBJECT>            or            <TYPE>/<ISSUE_ID>_<SUBJECT>
 ```
+
+Branch names are UPPERCASE with underscores. `<TYPE>` is UPPERCASE; `<SUBJECT>` uses
+`UPPER_SNAKE_CASE`. Include the issue or work-item id as the first subject segment when available.
 
 Examples:
 
 ```text
-feat/184-supplier-duplicate-check
-fix/231-margin-rounding
-docs/77-security-reporting
-security/302-restrict-workflow-permissions
+FEAT/184_SUPPLIER_DUPLICATE_CHECK
+FIX/231_MARGIN_ROUNDING
+DOCS/GITHUB_STANDARDIZATION
+SECURITY/302_RESTRICT_WORKFLOW_PERMISSIONS
 ```
 
 Approved types:
 
 | Prefix | Use |
 |---|---|
-| `feat/` | New user or business capability |
-| `fix/` | Defect correction |
-| `docs/` | Documentation-only change |
-| `refactor/` | Behavior-preserving structural change |
-| `test/` | Test-only change |
-| `chore/` | Maintenance or tooling |
-| `security/` | Approved security remediation |
-| `hotfix/` | Urgent production correction |
-| `release/` | Controlled release preparation |
-| `experiment/` | Time-boxed, non-production experiment |
+| `FEAT/` | New user or business capability |
+| `FIX/` | Defect correction |
+| `DOCS/` | Documentation-only change |
+| `REFACTOR/` | Behavior-preserving structural change |
+| `TEST/` | Test-only change |
+| `CHORE/` | Maintenance or tooling |
+| `SECURITY/` | Approved security remediation |
+| `HOTFIX/` | Urgent production correction |
+| `RELEASE/` | Controlled release preparation |
+| `EXPERIMENT/` | Time-boxed, non-production experiment |
 
 Rules:
 
-- use lowercase kebab-case;
+- use UPPERCASE `<TYPE>` and `UPPER_SNAKE_CASE` `<SUBJECT>`;
 - include the issue or work-item identifier when available;
-- keep the description concise and meaningful;
+- keep the subject concise and meaningful;
 - do not use personal names;
 - do not reuse a merged branch name for unrelated work;
 - do not store multiple unrelated work items in one branch.
+
+> Note: branch names are UPPERCASE (`<TYPE>/<SUBJECT>`); **commit messages remain lowercase
+> Conventional Commits** (`feat:`, `fix:`, `docs:`). The two conventions are intentionally different.
 
 ## 4. Standard workflow
 
 ```bash
 git switch main
 git pull --ff-only
-git switch -c feat/184-supplier-duplicate-check
+git switch -c FEAT/184_SUPPLIER_DUPLICATE_CHECK
 
 # Work in small, coherent commits.
 
 git fetch origin
 git rebase origin/main
-git push --set-upstream origin feat/184-supplier-duplicate-check
+git push --set-upstream origin FEAT/184_SUPPLIER_DUPLICATE_CHECK
 ```
 
 Open a draft pull request when early feedback is useful. Mark it ready only after the author checklist and required validation are complete.
@@ -157,7 +168,7 @@ Repositories must document their enabled merge methods.
 
 ## 8. Hotfixes
 
-Use `hotfix/<issue-id>-<description>` for an urgent correction to production.
+Use `HOTFIX/<ISSUE_ID>_<SUBJECT>` for an urgent correction to production.
 
 Process:
 
