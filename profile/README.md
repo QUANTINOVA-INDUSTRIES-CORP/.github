@@ -1,4 +1,7 @@
-![QUANTINOVA INDUSTRIES CORP](assets/QIC_BANNER.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/QIC_BANNER_DARK.png">
+  <img alt="QUANTINOVA INDUSTRIES CORP" src="assets/QIC_BANNER_LIGHT.png">
+</picture>
 
 # QUANTINOVA INDUSTRIES CORP
 

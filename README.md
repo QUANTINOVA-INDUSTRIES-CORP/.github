@@ -59,7 +59,8 @@ Configure the repository as follows:
 │   └── STANDARDS.md
 ├── profile/
 │   ├── assets/
-│   │   └── QIC_BANNER.png
+│   │   ├── QIC_BANNER_DARK.png
+│   │   └── QIC_BANNER_LIGHT.png
 │   └── README.md
 ├── templates/
 │   ├── AGENTS.md
