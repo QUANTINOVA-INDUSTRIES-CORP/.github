@@ -105,7 +105,7 @@ backups/
 # Operating system
 .DS_Store
 Thumbs.db
-Desktop.ini
+desktop.ini
 
 # Packaging and dependency-manager caches
 pip-wheel-metadata/

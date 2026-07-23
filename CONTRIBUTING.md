@@ -23,7 +23,7 @@ git clone https://github.com/QUANTINOVA-INDUSTRIES-CORP/[REPOSITORY_NAME].git
 cd [REPOSITORY_NAME]
 git switch main
 git pull --ff-only
-git switch -c feat/[ISSUE_ID]-short-description
+git switch -c FEAT/[ISSUE_ID]_SHORT_SUBJECT
 ```
 
 Repository documentation must replace `[REPOSITORY_NAME]`, `[ISSUE_ID]`, and any other placeholder with approved values.
@@ -34,15 +34,16 @@ Follow `docs/BRANCH_STRATEGY.md`.
 
 Default branch categories:
 
-- `feat/` — new capability;
-- `fix/` — defect correction;
-- `docs/` — documentation only;
-- `refactor/` — behavior-preserving code change;
-- `test/` — test-only change;
-- `chore/` — maintenance;
-- `security/` — approved security remediation;
-- `hotfix/` — urgent production correction;
-- `release/` — controlled release preparation where used.
+- `FEAT/` — new capability;
+- `FIX/` — defect correction;
+- `DOCS/` — documentation only;
+- `REFACTOR/` — behavior-preserving code change;
+- `TEST/` — test-only change;
+- `CHORE/` — maintenance;
+- `SECURITY/` — approved security remediation;
+- `HOTFIX/` — urgent production correction;
+- `RELEASE/` — controlled release preparation where used;
+- `EXPERIMENT/` — time-boxed, non-production experiment.
 
 Keep branches short-lived and focused. Do not commit directly to protected branches.
 

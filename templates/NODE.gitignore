@@ -80,7 +80,7 @@ temp/
 # Operating system
 .DS_Store
 Thumbs.db
-Desktop.ini
+desktop.ini
 
 # Tooling
 .eslintcache

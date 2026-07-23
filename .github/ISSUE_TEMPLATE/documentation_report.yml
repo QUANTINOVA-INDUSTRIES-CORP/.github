@@ -1,0 +1,99 @@
+name: Documentation issue
+description: Report incorrect, unclear, outdated, or missing documentation.
+title: "[DOCS] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping keep the documentation accurate.
+
+        Do not include passwords, API keys, access tokens, client-confidential information, personal data, procurement-sensitive records, or unredacted production logs. Report security vulnerabilities privately under the repository's Security tab instead of using this form.
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Pre-submission checks
+      description: Confirm each item before submitting.
+      options:
+        - label: I searched existing open and closed issues for the same documentation problem.
+          required: true
+        - label: I checked the current version of the document on the default branch.
+          required: true
+        - label: This report does not disclose a security vulnerability or confidential information.
+          required: true
+
+  - type: input
+    id: document_location
+    attributes:
+      label: Document and location
+      description: Identify the affected file, page, or section as precisely as possible.
+      placeholder: "Example: docs/BRANCH_STRATEGY.md — section 3, Working branches"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: Documentation issue type
+      description: Select the closest match.
+      options:
+        - Incorrect content
+        - Outdated content
+        - Unclear or ambiguous content
+        - Missing content
+        - Broken link or reference
+        - Formatting or rendering problem
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_content
+    attributes:
+      label: Current content
+      description: Quote or describe what the documentation says now.
+      placeholder: "Quote the current text, or write 'Not documented' when content is missing."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_content
+    attributes:
+      label: Expected content
+      description: Describe what the documentation should say, citing the authoritative source, standard, or observed behavior that supports the correction.
+      placeholder: "State the correct information and its source. Write 'NOT STATED' for details you cannot confirm."
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact
+      description: Explain who is affected and what goes wrong when the documentation is followed as written.
+      placeholder: "Example: New contributors create branch names that fail review."
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Add sanitized screenshots, links, command output, or rendered-page references that demonstrate the problem.
+    validations:
+      required: false
+
+  - type: textarea
+    id: suggested_correction
+    attributes:
+      label: Suggested correction
+      description: Propose replacement wording or structure when you have a concrete suggestion.
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional context
+      description: Add related issues, pull requests, or non-sensitive references.
+    validations:
+      required: false

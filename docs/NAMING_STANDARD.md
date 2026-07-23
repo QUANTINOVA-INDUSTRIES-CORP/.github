@@ -5,28 +5,31 @@ repositories. Repository-specific standards may add stricter rules but must not 
 
 ## 1. Folders
 
-- Folders are `UPPERCASE`, using `UPPER_SNAKE_CASE` for multi-word names.
-- Examples: `GOVERNANCE`, `DECISION_REGISTERS`, `WORKFLOW_TEMPLATES`.
+- Folders are `lowercase`, using `lower_snake_case` for multi-word names.
+- Examples: `docs`, `templates`, `profile`.
+- Platform-fixed directories keep their required exact form (for example `.github/` and
+  `.github/ISSUE_TEMPLATE/`).
 
 ## 2. Files
 
 - Files are `UPPERCASE_NAME.lowercaseext` — uppercase base name, lowercase extension.
 - Examples: `REPOSITORY_STANDARDS.md`, `BRANCH_STRATEGY.md`, `INTEGRATION_MAP.json`.
 
-## 3. Lowercase exceptions (tool- or platform-mandated)
+## 3. Fixed-name exceptions (tool- or platform-mandated)
 
-These keep their required lowercase or fixed form, because the toolchain or GitHub recognizes
-them only by an exact name:
+These keep their required exact form, because the toolchain or GitHub recognizes them only by
+that name:
 
 | Item | Reason |
 |---|---|
-| `readme.md` | Rendered as the repository/profile landing file |
-| `claude.md`, `agents.md`, `codex.md` | AI agent instruction files read by name |
 | `.github/`, `.git/` | Platform-recognized directories |
 | `.gitignore`, `.gitattributes` | Git-recognized dotfiles |
-| `LICENSE`, `CODEOWNERS` | GitHub-recognized fixed names |
-| `.github/ISSUE_TEMPLATE/` and its `*.yml` forms | GitHub issue-form contract |
+| `LICENSE`, `CODEOWNERS` | GitHub-recognized fixed names (no extension) |
+| `.github/ISSUE_TEMPLATE/` and its `*.yml` forms | GitHub issue-form contract (lowercase filenames) |
 | Plugin skill / agent / command file and directory names | Loader requires lowercase names |
+
+`README.md`, `CLAUDE.md`, and `AGENTS.md` follow the standard file rule in section 2 and match
+the exact names GitHub and AI tooling read; they are not exceptions.
 
 ## 4. Branches and commits
 
