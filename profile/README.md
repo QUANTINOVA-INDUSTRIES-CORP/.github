@@ -57,7 +57,7 @@ Most repositories are maintained for internal corporate use. Where external cont
 
 ## Corporate website
 
-[quantinovaindustries.org](https://quantinovaindustries.org)
+[quantinovaindustriescorp.com](https://quantinovaindustriescorp.com)
 
 ---
 
