@@ -1,9 +1,7 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/QIC_BANNER_DARK.png">
-  <img alt="QUANTINOVA INDUSTRIES CORP" src="assets/QIC_BANNER_LIGHT.png">
+  <img alt="QUANTINOVA INDUSTRIES CORP" src="assets/QIC_BANNER_LIGHT.png" width="600">
 </picture>
-
-# QUANTINOVA INDUSTRIES CORP
 
 **Industrial supply, engineering support, procurement systems, and operational technology.**
 
