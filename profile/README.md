@@ -1,8 +1,13 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/QIC_BANNER_DARK.png">
+  <img alt="QUANTINOVA INDUSTRIES CORP" src="assets/QIC_BANNER_LIGHT.png">
+</picture>
+
 # QUANTINOVA INDUSTRIES CORP
 
 **Industrial supply, engineering support, procurement systems, and operational technology.**
 
-QUANTINOVA INDUSTRIES CORP builds disciplined systems for sourcing, technical evaluation, project delivery, and accountable operations. Our GitHub organization contains the software, automation, documentation, and governance components that support those functions.
+QUANTINOVA INDUSTRIES CORP (QIC) builds disciplined systems for sourcing, technical evaluation, project delivery, and accountable operations. The QIC GitHub organization contains the software, automation, documentation, and governance components that support those functions.
 
 ## What we work on
 
@@ -33,6 +38,8 @@ Organization repositories should follow the default guidance in this `.github` r
 - [Coding standards](../docs/STANDARDS.md)
 - [Branch strategy](../docs/BRANCH_STRATEGY.md)
 - [Commit conventions](../docs/COMMIT_CONVENTIONS.md)
+- [Naming standard](../docs/NAMING_STANDARD.md)
+- [Repository baseline](../docs/REPOSITORY_BASELINE.md)
 
 ## Security reporting
 

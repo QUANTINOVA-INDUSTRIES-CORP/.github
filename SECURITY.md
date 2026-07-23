@@ -12,7 +12,6 @@ Each repository must maintain a repository-specific support table when its relea
 | Default branch | Supported for development; not necessarily production-ready |
 | Previous production release | Supported only during an announced transition window |
 | Older, archived, or end-of-life versions | Not supported |
-| `[PROJECT_SPECIFIC_VERSION]` | NOT STATED — replace or remove |
 
 ## Reporting a vulnerability
 

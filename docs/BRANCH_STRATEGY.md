@@ -227,7 +227,7 @@ Administrators should follow the same controls except during a documented emerge
 
 ## 12. Experiments
 
-`experiment/` branches must be time-boxed and must not deploy to production. An experiment moving toward production requires an approved issue, normal branch type, production-quality tests, security review, and documentation.
+`EXPERIMENT/` branches must be time-boxed and must not deploy to production. An experiment moving toward production requires an approved issue, normal branch type, production-quality tests, security review, and documentation.
 
 ## 13. Exceptions
 
