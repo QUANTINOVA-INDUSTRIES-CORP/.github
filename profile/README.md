@@ -1,9 +1,17 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/QIC_BANNER_DARK.png">
-  <img alt="QUANTINOVA INDUSTRIES CORP" src="assets/QIC_BANNER_LIGHT.png" width="600">
-</picture>
+<br>
 
-**Industrial supply, engineering support, procurement systems, and operational technology.**
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/QIC_BANNER_DARK.png">
+    <img alt="QUANTINOVA INDUSTRIES CORP" src="assets/QIC_BANNER_LIGHT.png" width="90%">
+  </picture>
+</p>
+
+<p align="center">
+  <strong>Industrial supply, engineering support, procurement systems, and operational technology.</strong>
+</p>
+
+<br>
 
 QUANTINOVA INDUSTRIES CORP (QIC) builds disciplined systems for sourcing, technical evaluation, project delivery, and accountable operations. The QIC GitHub organization contains the software, automation, documentation, and governance components that support those functions.
 
@@ -49,7 +57,7 @@ Most repositories are maintained for internal corporate use. Where external cont
 
 ## Corporate website
 
-[quantinovaindustries.org](https://quantinovaindustries.org)
+[quantinovaindustriescorp.com](https://quantinovaindustriescorp.com)
 
 ---
 
