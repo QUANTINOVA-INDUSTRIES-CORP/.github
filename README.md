@@ -58,6 +58,8 @@ Configure the repository as follows:
 │   ├── REPOSITORY_BASELINE.md
 │   └── STANDARDS.md
 ├── profile/
+│   ├── assets/
+│   │   └── QIC_BANNER.png
 │   └── README.md
 ├── templates/
 │   ├── AGENTS.md

@@ -1,3 +1,5 @@
+![QUANTINOVA INDUSTRIES CORP](assets/QIC_BANNER.png)
+
 # QUANTINOVA INDUSTRIES CORP
 
 **Industrial supply, engineering support, procurement systems, and operational technology.**
