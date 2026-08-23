@@ -46,6 +46,12 @@ Organization repositories should follow the default guidance in this `.github` r
 - [Commit conventions](../docs/COMMIT_CONVENTIONS.md)
 - [Naming standard](../docs/NAMING_STANDARD.md)
 - [Repository baseline](../docs/REPOSITORY_BASELINE.md)
+- [Multi-agent governance](../docs/GOVERNANCE.md)
+- [Agent policy](../docs/AGENT_POLICY.md)
+- [Label policy](../docs/LABEL_POLICY.md)
+- [Provenance policy](../docs/PROVENANCE_POLICY.md)
+- [Review policy](../docs/REVIEW_POLICY.md)
+- [Identity naming policy](../docs/IDENTITY_NAMING_POLICY.md)
 
 ## Security reporting
 

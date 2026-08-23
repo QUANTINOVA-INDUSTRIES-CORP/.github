@@ -1,0 +1,84 @@
+name: Architecture proposal or decision
+description: Propose or record a material architecture, system-boundary, or data-model decision.
+title: "[ARCHITECTURE] "
+labels:
+  - "type:feature"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for decisions covered by `STANDARDS.md` §5.2: system boundaries, data model or
+        storage technology, authentication and authorization, external platforms or strategic
+        dependencies, irreversible migrations, or material cost/security/operational tradeoffs.
+
+        Do not include credentials, client-confidential information, or personal data.
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Pre-submission checks
+      options:
+        - label: I searched existing issues and decision records for the same or a related decision.
+          required: true
+        - label: This is a material decision, not a routine implementation detail.
+          required: true
+
+  - type: input
+    id: repository_component
+    attributes:
+      label: Repository and affected area
+      placeholder: "Example: qic-data-platform — ingestion service boundary"
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: What forces this decision now? What is the current state?
+    validations:
+      required: true
+
+  - type: textarea
+    id: decision
+    attributes:
+      label: Proposed or recorded decision
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Include why each alternative was not chosen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: consequences
+    attributes:
+      label: Consequences
+      description: Include what becomes easier, harder, or irreversible as a result.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: reversibility
+    attributes:
+      label: Reversibility
+      options:
+        - Fully reversible
+        - Reversible with cost
+        - Effectively irreversible
+    validations:
+      required: true
+
+  - type: textarea
+    id: owner_approver
+    attributes:
+      label: Owner and approver
+      placeholder: |
+        - Owner:
+        - Approver:
+    validations:
+      required: true

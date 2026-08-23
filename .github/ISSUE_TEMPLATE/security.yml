@@ -1,0 +1,73 @@
+name: Security hardening task
+description: Track a security improvement, control gap, or hardening task. Not for reporting a vulnerability.
+title: "[SECURITY] "
+labels:
+  - "type:security"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Do not use this form to report a suspected vulnerability.** Use the repository's
+        Security tab and "Report a vulnerability," per `SECURITY.md`. This form is for planned
+        hardening work: closing a known control gap, adding a missing check, dependency
+        remediation, or a security-improvement request that is not an active exploit or
+        disclosure.
+
+        Do not include credentials, tokens, exploit details, or confidential information.
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Pre-submission checks
+      options:
+        - label: This is not a vulnerability report — I have used private reporting for those.
+          required: true
+        - label: I searched existing issues for the same hardening item.
+          required: true
+
+  - type: input
+    id: repository_component
+    attributes:
+      label: Repository and affected area
+    validations:
+      required: true
+
+  - type: textarea
+    id: gap
+    attributes:
+      label: Control gap or improvement
+      description: Reference the relevant `STANDARDS.md` §8 control where applicable.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: risk_label
+    attributes:
+      label: Applicable risk label
+      description: See LABEL_POLICY.md §5.
+      options:
+        - "risk:breaking"
+        - "risk:security"
+        - "risk:data"
+        - "risk:infra"
+    validations:
+      required: true
+
+  - type: textarea
+    id: remediation
+    attributes:
+      label: Proposed remediation
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - "priority:critical"
+        - "priority:high"
+        - "priority:medium"
+        - "priority:low"
+    validations:
+      required: true
