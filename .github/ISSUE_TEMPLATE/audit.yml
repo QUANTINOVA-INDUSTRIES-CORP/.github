@@ -1,0 +1,58 @@
+name: Audit assignment or finding
+description: Track a read-only audit assignment, or a finding produced by one.
+title: "[AUDIT] "
+labels:
+  - "type:audit"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use for AGY-style read-only audit assignments, or for recording a finding an audit
+        produced. Audit assignments are read-only by definition — see `AGENT_POLICY.md` §1.
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      options:
+        - Audit assignment
+        - Audit finding
+    validations:
+      required: true
+
+  - type: input
+    id: scope
+    attributes:
+      label: Audit scope
+      placeholder: "Example: QUANTINOVA-INDUSTRIES-CORP GitHub org, excluding MCP repos"
+    validations:
+      required: true
+
+  - type: textarea
+    id: detail
+    attributes:
+      label: Assignment detail or finding detail
+      description: For a finding, cite the source repository and path; state the recommendation (RETAIN / ADAPT / REFERENCE / ARCHIVE / REJECT) if applicable.
+    validations:
+      required: true
+
+  - type: input
+    id: assigned_agent
+    attributes:
+      label: Assigned or reporting agent
+      placeholder: "agy"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: status
+    attributes:
+      label: Status
+      options:
+        - "status:triage"
+        - "status:in-progress"
+        - "status:review"
+        - "status:approved"
+        - "status:deferred"
+    validations:
+      required: true
