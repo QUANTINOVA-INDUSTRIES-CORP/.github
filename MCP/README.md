@@ -19,7 +19,14 @@ Required server environment:
 ```bash
 QIC_GITLAB_BASE_URL=https://gitlab.quantinovaindustries.org
 QIC_GITLAB_PAT=<SERVER_SIDE_SECRET_ONLY>
+QIC_ENABLE_MUTATIONS=false
 ```
+
+`QIC_ENABLE_MUTATIONS` defaults to `false`. Read-only GitLab tools remain available, but branch,
+file-write, and merge-request tools are rejected by the server until an operator deliberately sets
+`QIC_ENABLE_MUTATIONS=true` and restarts the service. The tool call must still carry
+`owner_approved=true`. This is a defense-in-depth gate; the boolean tool argument alone is not an
+authentication mechanism.
 
 Recommended client/edge authentication is CLOUDFLARE ACCESS using per-device or per-agent service
 tokens. The repository template expects these client-side environment variables:
@@ -71,7 +78,8 @@ the scopes required by the enabled tools. The current server needs GitLab API ac
 `sudo` or instance-administration scopes.
 
 The server deliberately exposes no merge tool. Branch creation, file mutation, and merge-request
-creation require `owner_approved=true`, and file mutation is blocked on `main` and `master`.
+creation require both server mutation mode and `owner_approved=true`. Direct file mutation is blocked
+on `main` and `master`.
 
 ## Exposed tools
 
@@ -89,10 +97,11 @@ creation require `owner_approved=true`, and file mutation is blocked on `main` a
 Before production routing:
 
 1. Configure `QIC_GITLAB_PAT` only in the MCP service environment.
-2. Verify `gitlab_whoami` returns the intended GitLab identity.
-3. Create the CLOUDFLARE DNS/TUNNEL route for `mcp.quantinovaindustries.org`.
-4. Protect the hostname with CLOUDFLARE ACCESS.
-5. Test `qic_directive_get` from CLAUDE CODE.
-6. Test read-only GitLab tools.
-7. Test mutation only on a disposable non-default branch with explicit owner approval.
-8. Roll the `.mcp.json`, `CLAUDE.md`, and `AGENTS.md` templates into active repositories.
+2. Keep `QIC_ENABLE_MUTATIONS=false` for initial deployment.
+3. Verify `gitlab_whoami` returns the intended GitLab identity.
+4. Create the CLOUDFLARE DNS/TUNNEL route for `mcp.quantinovaindustries.org`.
+5. Protect the hostname with CLOUDFLARE ACCESS.
+6. Test `qic_directive_get` from CLAUDE CODE.
+7. Test read-only GitLab tools.
+8. For a controlled mutation test, enable mutation mode, restart the MCP service, use a disposable non-default branch, then disable mutation mode again.
+9. Roll the `.mcp.json`, `CLAUDE.md`, and `AGENTS.md` templates into active repositories.
