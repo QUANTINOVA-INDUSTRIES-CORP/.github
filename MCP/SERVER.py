@@ -14,7 +14,13 @@ GITLAB_BASE_URL = os.getenv(
     "https://gitlab.quantinovaindustries.org",
 ).rstrip("/")
 GITLAB_PAT = os.getenv("QIC_GITLAB_PAT")
-DIRECTIVE_VERSION = "2026-09-05.1"
+MUTATIONS_ENABLED = os.getenv("QIC_ENABLE_MUTATIONS", "false").strip().lower() in {
+    "1",
+    "true",
+    "yes",
+    "on",
+}
+DIRECTIVE_VERSION = "2026-09-05.2"
 PROTECTED_BRANCHES = {"main", "master"}
 MAX_FILE_BYTES = 1_000_000
 
@@ -22,10 +28,12 @@ DIRECTIVE: dict[str, Any] = {
     "version": DIRECTIVE_VERSION,
     "authority": CONTROL_PLANE_URL,
     "gitlab": GITLAB_BASE_URL,
+    "mutations_enabled": MUTATIONS_ENABLED,
     "rules": [
         "Synchronize this directive before repository work.",
         "Use the QIC MCP control plane for agent-originated GitLab API operations.",
         "Never request, reveal, print, log, persist, or commit the GitLab PAT.",
+        "GitLab mutation is disabled unless QIC_ENABLE_MUTATIONS=true on the MCP host.",
         "Never write directly to main or master.",
         "Never merge through the agent control plane; merge remains an explicit owner action.",
         "Mutation tools require explicit owner_approved=true for the specific action.",
@@ -59,6 +67,13 @@ def _project(project: str | int) -> str:
 
 def _file_path(path: str) -> str:
     return quote(path, safe="")
+
+
+def _assert_mutations_enabled() -> None:
+    if not MUTATIONS_ENABLED:
+        raise PermissionError(
+            "Mutation blocked: QIC_ENABLE_MUTATIONS is not enabled on the MCP server"
+        )
 
 
 def _assert_owner_approved(owner_approved: bool) -> None:
@@ -191,7 +206,8 @@ async def gitlab_branch_create(
     ref: str = "main",
     owner_approved: bool = False,
 ) -> dict[str, Any]:
-    """Create a working branch. Requires explicit owner approval."""
+    """Create a working branch. Requires server mutation mode and explicit owner approval."""
+    _assert_mutations_enabled()
     _assert_owner_approved(owner_approved)
     _assert_mutable_branch(branch)
     response = await _gitlab_request(
@@ -219,6 +235,7 @@ async def gitlab_file_write(
     last_commit_id: str | None = None,
 ) -> dict[str, Any]:
     """Create or replace a UTF-8 text file on a non-protected branch."""
+    _assert_mutations_enabled()
     _assert_owner_approved(owner_approved)
     _assert_mutable_branch(branch)
 
@@ -265,6 +282,7 @@ async def gitlab_merge_request_create(
     owner_approved: bool = False,
 ) -> dict[str, Any]:
     """Open a merge request after explicit owner approval. This tool never merges it."""
+    _assert_mutations_enabled()
     _assert_owner_approved(owner_approved)
     _assert_mutable_branch(source_branch)
     response = await _gitlab_request(
