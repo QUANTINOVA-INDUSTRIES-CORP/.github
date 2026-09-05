@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "qic-control-plane": {
+      "type": "http",
+      "url": "https://mcp.quantinovaindustries.org/mcp",
+      "headers": {
+        "CF-Access-Client-Id": "${QIC_CF_ACCESS_CLIENT_ID}",
+        "CF-Access-Client-Secret": "${QIC_CF_ACCESS_CLIENT_SECRET}"
+      }
+    }
+  }
+}
