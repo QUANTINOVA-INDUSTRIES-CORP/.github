@@ -1,0 +1,62 @@
+{
+  "organization": "QUANTINOVA INDUSTRIES CORP.",
+  "authority": "https://mcp.quantinovaindustries.org/mcp",
+  "scm": "https://gitlab.quantinovaindustries.org",
+  "directive_tool": "qic_directive_get",
+  "directive_version": "2026-09-05.3",
+  "default_mode": "read-only",
+  "merge_authority": "human-owner-only",
+  "credential_boundary": "server-side",
+  "transports": {
+    "streamable_http": "/mcp",
+    "sse": "/sse",
+    "health": "/health"
+  },
+  "mutation_gate": {
+    "requires_all_of": [
+      "QIC_ENABLE_MUTATIONS=true on the MCP host",
+      "owner_approved=true tool argument",
+      "fresh single-use operator approval file on the MCP host"
+    ]
+  },
+  "tools": {
+    "read": [
+      "qic_directive_get",
+      "gitlab_whoami",
+      "gitlab_project_search",
+      "gitlab_project_get",
+      "gitlab_file_read"
+    ],
+    "mutation": [
+      "gitlab_branch_create",
+      "gitlab_file_write",
+      "gitlab_merge_request_create"
+    ],
+    "never_exposed": [
+      "merge",
+      "repository_delete",
+      "project_delete",
+      "gitlab_admin",
+      "gitlab_sudo",
+      "get_token",
+      "show_pat",
+      "get_credentials",
+      "debug_env",
+      "dump_env"
+    ]
+  },
+  "supported_harnesses": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "chatgpt",
+    "openclaw"
+  ],
+  "harness_status": {
+    "claude-code": "connected",
+    "codex": "not-yet-configured",
+    "cursor": "not-yet-configured",
+    "chatgpt": "scaffold-only, read-only tools, auth pending",
+    "openclaw": "not-yet-configured"
+  }
+}

@@ -23,10 +23,12 @@ QIC_ENABLE_MUTATIONS=false
 ```
 
 `QIC_ENABLE_MUTATIONS` defaults to `false`. Read-only GitLab tools remain available, but branch,
-file-write, and merge-request tools are rejected by the server until an operator deliberately sets
-`QIC_ENABLE_MUTATIONS=true` and restarts the service. The tool call must still carry
-`owner_approved=true`. This is a defense-in-depth gate; the boolean tool argument alone is not an
-authentication mechanism.
+file-write, and merge-request tools require **three independent factors** before they run:
+`QIC_ENABLE_MUTATIONS=true` (restart-gated), the tool call carrying `owner_approved=true`, and a
+fresh, single-use approval file created by the operator directly on the MCP host
+(`/run/qic-mcp/approve` by default, TTL `QIC_MCP_APPROVAL_TTL_SECONDS`, default 300s). None of the
+three is sufficient alone — see `SECURITY.md` for the full rationale and `OPERATIONS.md` for how to
+grant a mutation window.
 
 Recommended client/edge authentication is CLOUDFLARE ACCESS using per-device or per-agent service
 tokens. The repository template expects these client-side environment variables:
@@ -47,8 +49,11 @@ uv sync
 uv run python SERVER.py
 ```
 
-The MCP SDK serves Streamable HTTP at `/mcp` on its configured local listener. Keep the listener
-private and publish it only through the existing CLOUDFLARE TUNNEL / ACCESS path.
+This serves three routes on one listener (`QIC_MCP_HOST`:`QIC_MCP_PORT`, default
+`127.0.0.1:8000`): Streamable HTTP at `/mcp` (Claude Code, Codex, Cursor), SSE at `/sse` (for
+ChatGPT-style custom connectors), and a secret-free `/health` check. Keep the listener private and
+publish it only through the existing CLOUDFLARE TUNNEL / ACCESS path. `python SERVER.py --stdio`
+runs stdio transport instead, for local debugging only.
 
 Example CLOUDFLARE TUNNEL ingress entry:
 
@@ -103,5 +108,11 @@ Before production routing:
 5. Protect the hostname with CLOUDFLARE ACCESS.
 6. Test `qic_directive_get` from CLAUDE CODE.
 7. Test read-only GitLab tools.
-8. For a controlled mutation test, enable mutation mode, restart the MCP service, use a disposable non-default branch, then disable mutation mode again.
+8. For a controlled mutation test: enable mutation mode, restart the MCP service, create the
+   operator approval file immediately before each mutation call (`OPERATIONS.md`), use a
+   disposable non-default branch, then disable mutation mode again.
 9. Roll the `.mcp.json`, `CLAUDE.md`, and `AGENTS.md` templates into active repositories.
+
+See `DEPLOYMENT.md` for the full HomeLab procedure, `OPERATIONS.md` for day-2 operations,
+`SECURITY.md` for the complete threat model, `TESTING.md` for the test matrix, and `ROLLBACK.md`
+to undo any part of this.

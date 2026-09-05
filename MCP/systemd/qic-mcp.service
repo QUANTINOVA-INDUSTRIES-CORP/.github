@@ -1,0 +1,38 @@
+[Unit]
+Description=QIC MCP Control Plane
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=qic-mcp
+Group=qic-mcp
+WorkingDirectory=/srv/qic-mcp
+EnvironmentFile=/etc/qic-mcp/qic-mcp.env
+ExecStart=/srv/qic-mcp/.venv/bin/python /srv/qic-mcp/MCP/SERVER.py
+Restart=on-failure
+RestartSec=5
+RuntimeDirectory=qic-mcp
+RuntimeDirectoryMode=0750
+
+# Hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+RestrictSUIDSGID=true
+LockPersonality=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+RestrictNamespaces=true
+RestrictRealtime=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native
+ReadWritePaths=/run/qic-mcp
+
+[Install]
+WantedBy=multi-user.target
