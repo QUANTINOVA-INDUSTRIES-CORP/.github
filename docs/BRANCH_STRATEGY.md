@@ -32,13 +32,13 @@ The repository may define `main` as continuously deployable or release-ready. Th
 
 ### Release branches
 
-Use `RELEASE/<VERSION_OR_PERIOD>` only when the repository must stabilize a release independently of ongoing development.
+Use `release/<version-or-period>` only when the repository must stabilize a release independently of ongoing development.
 
 Examples:
 
 ```text
-RELEASE/2.4.0
-RELEASE/2026-07
+release/2.4.0
+release/2026-07
 ```
 
 Release branches must be temporary. Only release blockers, versioning, release notes, and approved stabilization changes may be added.
@@ -50,60 +50,83 @@ Every release-branch fix must also be merged or cherry-picked back to `main`.
 Format:
 
 ```text
-<TYPE>/<SUBJECT>            or            <TYPE>/<ISSUE_ID>_<SUBJECT>
+<type>/<agent>-<subject>            or            <type>/<agent>-<issue-id>-<subject>
 ```
 
-Branch names are UPPERCASE with underscores. `<TYPE>` is UPPERCASE; `<SUBJECT>` uses
-`UPPER_SNAKE_CASE`. Include the issue or work-item id as the first subject segment when available.
+Branch names are lowercase kebab-case. `<type>` is one of the approved types below. `<agent>` is the
+code of the agent (or human) that owns the branch. `<subject>` is short lowercase kebab-case; include
+the issue or work-item id as its first segment when available.
 
 Examples:
 
 ```text
-FEAT/184_SUPPLIER_DUPLICATE_CHECK
-FIX/231_MARGIN_ROUNDING
-DOCS/GITHUB_STANDARDIZATION
-SECURITY/302_RESTRICT_WORKFLOW_PERMISSIONS
+feat/cc-184-supplier-duplicate-check
+fix/cc-231-margin-rounding
+docs/cc-github-standardization
+security/cc-302-restrict-workflow-permissions
+chore/cdx-review-184-supplier-duplicate-check
 ```
 
 Approved types:
 
 | Prefix | Use |
 |---|---|
-| `FEAT/` | New user or business capability |
-| `FIX/` | Defect correction |
-| `DOCS/` | Documentation-only change |
-| `REFACTOR/` | Behavior-preserving structural change |
-| `TEST/` | Test-only change |
-| `CHORE/` | Maintenance or tooling |
-| `SECURITY/` | Approved security remediation |
-| `HOTFIX/` | Urgent production correction |
-| `RELEASE/` | Controlled release preparation |
-| `EXPERIMENT/` | Time-boxed, non-production experiment |
+| `feat/` | New user or business capability |
+| `fix/` | Defect correction |
+| `docs/` | Documentation-only change |
+| `refactor/` | Behavior-preserving structural change |
+| `test/` | Test-only change |
+| `chore/` | Maintenance or tooling, and review-only lanes |
+| `perf/` | Performance improvement |
+| `ci/` | Local-only validation tooling |
+| `security/` | Approved security remediation |
+| `hotfix/` | Urgent production correction |
+| `release/` | Controlled release preparation (`release/<version-or-period>`, no agent code) |
+| `experiment/` | Time-boxed, non-production experiment |
+
+Agent codes:
+
+| Code | Agent |
+|---|---|
+| `cc` | Claude Code |
+| `cdx` | Codex |
+| `agy` | Antigravity (AGY / Gemini) |
+| `grk` | Grok |
+| `oc` | OpenCode |
+| `cur` | Cursor |
+| `cop` | GitHub Copilot CLI |
+| `own` | A human working by hand (owner or staff) |
+
+New agents get a short lowercase code added to this table before they open branches.
 
 Rules:
 
-- use UPPERCASE `<TYPE>` and `UPPER_SNAKE_CASE` `<SUBJECT>`;
+- use lowercase kebab-case throughout; no uppercase, underscores, or spaces;
+- one agent per branch, so each agent's work is a separate line on the repository graph;
 - include the issue or work-item identifier when available;
 - keep the subject concise and meaningful;
-- do not use personal names;
+- do not use personal names (use the `own` code for human work);
 - do not reuse a merged branch name for unrelated work;
-- do not store multiple unrelated work items in one branch.
+- do not store multiple unrelated work items in one branch;
+- name the branch correctly before opening a pull request: renaming a pull request's head branch
+  on GitHub closes that pull request.
 
-> Note: branch names are UPPERCASE (`<TYPE>/<SUBJECT>`); **commit messages remain lowercase
-> Conventional Commits** (`feat:`, `fix:`, `docs:`). The two conventions are intentionally different.
+> Note: branch names and commit messages are both lowercase, but they are different formats:
+> branches are `<type>/<agent>-<subject>`; commits are Conventional Commits (`feat:`, `fix:`,
+> `docs:`). Do not conflate them.
 
 ## 4. Standard workflow
 
 ```bash
 git switch main
 git pull --ff-only
-git switch -c FEAT/184_SUPPLIER_DUPLICATE_CHECK
+git switch -c feat/cc-184-supplier-duplicate-check
 
 # Work in small, coherent commits.
 
 git fetch origin
 git rebase origin/main
-git push --set-upstream origin FEAT/184_SUPPLIER_DUPLICATE_CHECK
+git push --set-upstream origin feat/cc-184-supplier-duplicate-check
 ```
 
 Open a draft pull request when early feedback is useful. Mark it ready only after the author checklist and required validation are complete.
@@ -168,7 +191,7 @@ Repositories must document their enabled merge methods.
 
 ## 8. Hotfixes
 
-Use `HOTFIX/<ISSUE_ID>_<SUBJECT>` for an urgent correction to production.
+Use `hotfix/<agent>-<issue-id>-<subject>` for an urgent correction to production.
 
 Process:
 
@@ -227,7 +250,7 @@ Administrators should follow the same controls except during a documented emerge
 
 ## 12. Experiments
 
-`EXPERIMENT/` branches must be time-boxed and must not deploy to production. An experiment moving toward production requires an approved issue, normal branch type, production-quality tests, security review, and documentation.
+`experiment/` branches must be time-boxed and must not deploy to production. An experiment moving toward production requires an approved issue, normal branch type, production-quality tests, security review, and documentation.
 
 ## 13. Exceptions
 

@@ -94,7 +94,7 @@ The files in `.github/ISSUE_TEMPLATE/` are inherited only when a target reposito
 
 ## Maintenance and change procedure
 
-1. Make every change on an UPPERCASE working branch (see `docs/BRANCH_STRATEGY.md`) and submit it through a reviewed pull request. Never commit directly to `main`.
+1. Make every change on a lowercase `<type>/<agent>-<subject>` working branch (see `docs/BRANCH_STRATEGY.md`) and submit it through a reviewed pull request. Never commit directly to `main`.
 2. Replace bracketed placeholders such as `[SECURITY_CONTACT_EMAIL]` only with approved values.
 3. Validate Markdown, YAML, links, and structure before requesting review.
 4. Confirm referenced GitHub teams exist and have the required repository permissions before activating `CODEOWNERS` rules.

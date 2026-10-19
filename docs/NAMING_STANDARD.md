@@ -33,11 +33,19 @@ the exact names GitHub and AI tooling read; they are not exceptions.
 
 ## 4. Branches and commits
 
-- Branches: UPPERCASE `<TYPE>/<SUBJECT>` (see `BRANCH_STRATEGY.md`).
+- Branches: lowercase `<type>/<agent>-<subject>` (see `BRANCH_STRATEGY.md`).
 - Commits: lowercase Conventional Commits (see `COMMIT_CONVENTIONS.md`).
-- The two conventions are intentionally different and must not be conflated.
+- The two conventions are different formats and must not be conflated.
 
-## 5. Hygiene
+## 5. Repositories
+
+- New repositories: `qic_<lowercase-kebab-case>` (for example `qic_mission-control`,
+  `qic_model-context-protocol`).
+- Platform-fixed names keep their required form (`.github`).
+- Do not rename an existing repository slug only to enforce consistency; renames change clone URLs
+  and remotes and need an explicit, authorized migration.
+
+## 6. Hygiene
 
 - UTF-8 without BOM; LF line endings; no trailing whitespace.
 - No AI attribution anywhere — in files, metadata, frontmatter, or commit messages.

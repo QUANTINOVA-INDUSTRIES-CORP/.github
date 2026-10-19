@@ -23,7 +23,7 @@ git clone https://github.com/QUANTINOVA-INDUSTRIES-CORP/[REPOSITORY_NAME].git
 cd [REPOSITORY_NAME]
 git switch main
 git pull --ff-only
-git switch -c FEAT/[ISSUE_ID]_SHORT_SUBJECT
+git switch -c feat/[AGENT_CODE]-[ISSUE_ID]-short-subject
 ```
 
 Repository documentation must replace `[REPOSITORY_NAME]`, `[ISSUE_ID]`, and any other placeholder with approved values.
@@ -34,16 +34,20 @@ Follow `docs/BRANCH_STRATEGY.md`.
 
 Default branch categories:
 
-- `FEAT/` — new capability;
-- `FIX/` — defect correction;
-- `DOCS/` — documentation only;
-- `REFACTOR/` — behavior-preserving code change;
-- `TEST/` — test-only change;
-- `CHORE/` — maintenance;
-- `SECURITY/` — approved security remediation;
-- `HOTFIX/` — urgent production correction;
-- `RELEASE/` — controlled release preparation where used;
-- `EXPERIMENT/` — time-boxed, non-production experiment.
+Format: `<type>/<agent>-<subject>`, lowercase kebab-case (agent codes in `docs/BRANCH_STRATEGY.md` §3).
+
+- `feat/` — new capability;
+- `fix/` — defect correction;
+- `docs/` — documentation only;
+- `refactor/` — behavior-preserving code change;
+- `test/` — test-only change;
+- `chore/` — maintenance and review-only lanes;
+- `perf/` — performance improvement;
+- `ci/` — local-only validation tooling;
+- `security/` — approved security remediation;
+- `hotfix/` — urgent production correction;
+- `release/` — controlled release preparation where used;
+- `experiment/` — time-boxed, non-production experiment.
 
 Keep branches short-lived and focused. Do not commit directly to protected branches.
 
