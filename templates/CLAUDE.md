@@ -12,8 +12,8 @@ rules.
 
 ## Standards that always apply
 
-- Naming: `NAMING_STANDARD.md` (folders UPPERCASE; files `UPPERCASE_NAME.lowercaseext`; tool-mandated lowercase exceptions).
-- Branches: UPPERCASE `<TYPE>/<SUBJECT>`. Commits: lowercase Conventional Commits.
+- Naming: `NAMING_STANDARD.md` (folders `lower_snake_case`; files `UPPERCASE_NAME.lowercaseext`; tool-mandated lowercase exceptions; new repositories `qic_<lowercase-kebab-case>`).
+- Branches: lowercase `<type>/<agent>-<subject>` with the agent code from `BRANCH_STRATEGY.md` §3. Commits: lowercase Conventional Commits.
 - Never commit directly to `main`; never push or merge without explicit owner approval.
 - No AI attribution anywhere — files, metadata, frontmatter, or commit messages.
 - UTF-8 without BOM, LF endings, no trailing whitespace.
